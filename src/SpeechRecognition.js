@@ -82,27 +82,32 @@ const Dictaphone = ({
   if (transcript.includes("6")) {
     resetTranscript();
     console.log(transcript);
-    if (selected > 5 || opened > 5) cardSelected(6);
+    if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
+      cardSelected(6);
   }
   if (transcript.includes("7")) {
     resetTranscript();
     console.log(transcript);
-    if (selected > 5 || opened > 5) cardSelected(7);
+    if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
+      cardSelected(7);
   }
   if (transcript.includes("8")) {
     resetTranscript();
     console.log(transcript);
-    if (selected > 5 || opened > 5) cardSelected(8);
+    if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
+      cardSelected(8);
   }
   if (transcript.includes("9")) {
     resetTranscript();
     console.log(transcript);
-    if (selected > 5 || opened > 5) cardSelected(9);
+    if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
+      cardSelected(9);
   }
   if (transcript.includes("10")) {
     resetTranscript();
     console.log(transcript);
-    if (selected > 5 || opened > 5) cardSelected(10);
+    if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
+      cardSelected(10);
   }
 
   if (transcript.includes("open")) {

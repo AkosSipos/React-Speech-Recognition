@@ -63,6 +63,10 @@ function App() {
 
   const classes = useStyles();
 
+  const movedMouse = () => {
+    setView({ ...view, selected: 0, opened: 0 });
+  };
+
   const cardSelected = (card) => {
     setView({ ...view, selected: card });
     console.log("selected: " + view.selected + " " + card);
@@ -172,7 +176,7 @@ function App() {
       return view.cards.slice(5).map((cards) => (
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <CardUI
-            onClick={openCard}
+            onClick={openCardByMouse}
             number={cards}
             selected={view.selected}
           ></CardUI>
@@ -184,7 +188,7 @@ function App() {
   const display = () => {
     if (view.opened === 0) {
       return (
-        <div className={classes.root}>
+        <div className={classes.root} onMouseMove={movedMouse}>
           <SpeechRecognition
             nextPage={nextPage}
             previousPage={previousPage}
