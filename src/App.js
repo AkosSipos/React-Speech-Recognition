@@ -64,7 +64,8 @@ function App() {
   const classes = useStyles();
 
   const movedMouse = () => {
-    setView({ ...view, selected: 0, opened: 0 });
+    if (view.selected > 0 || view.opened > 0)
+      setView({ ...view, selected: 0, opened: 0 });
   };
 
   const cardSelected = (card) => {
