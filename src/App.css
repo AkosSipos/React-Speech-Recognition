@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.Cards {
+  display: inline-block;
+}
+
+div {
+  display: inline-flex;
+}
+
+.NavigateBefore {
+  display: flexbox;
+  justify-content: center;
+}
