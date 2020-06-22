@@ -7,26 +7,29 @@ import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import SpeechRecognition from "./SpeechRecognition";
 import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
 import "./App.css";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    display: "flex",
+    height: "100vh",
+    width: "100vw",
+    display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
+    backgroundSize: "auto 100%",
+    background: "linear-gradient(to bottom, white 50%, #2962ff 50%)",
   },
 
-  roothovered: {
-    minWidth: 275,
-    height: 300,
-    width: 250,
-    display: "flex",
+  root2: {
+    height: "100vh",
+    width: "100vw",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#448aff",
+    backgroundSize: "auto 100%",
   },
-  content: {},
+
   avatar: {
     width: 50,
     height: 50,
@@ -40,16 +43,10 @@ const useStyles = makeStyles({
     width: 40,
     height: 40,
   },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
+  close: {
+    position: "absolute",
+    top: 10,
+    right: 10,
   },
 });
 
@@ -70,15 +67,15 @@ function App() {
 
   const cardSelected = (card) => {
     setView({ ...view, selected: card });
-    console.log("selected: " + view.selected + " " + card);
+    //console.log("selected: " + view.selected + " " + card);
   };
-  console.log("selected: " + view.selected);
+  //console.log("selected: " + view.selected);
 
   const openCard = () => {
     setView({ ...view, opened: view.selected });
-    console.log("opened: " + view.opened + " " + view.selected);
+    //console.log("opened: " + view.opened + " " + view.selected);
   };
-  console.log("opened: " + view.opened);
+  //console.log("opened: " + view.opened);
 
   const openCardByMouse = (card) => {
     setView({ ...view, selected: card, opened: card });
@@ -90,12 +87,12 @@ function App() {
 
   const previousPage = () => {
     setView({ ...view, page: 1 });
-    console.log("page 1");
+    //console.log("page 1");
   };
 
   const nextPage = () => {
     setView({ ...view, page: 2 });
-    console.log("page 2");
+    //console.log("page 2");
   };
 
   const previousCard = () => {
@@ -157,13 +154,13 @@ function App() {
         });
     }
   };
-  console.log("selected: " + view.selected);
-  console.log("opened: " + view.opened);
+  //console.log("selected: " + view.selected);
+  //console.log("opened: " + view.opened);
 
   const displayCards = () => {
     if (view.page === 1) {
       return view.cards.slice(0, 5).map((cards) => (
-        <Grid item xs={12} sm={6} md={4} lg={3}>
+        <Grid item justify="center" xs={12} sm={6} md={4} lg={3}>
           <CardUI
             onClick={openCardByMouse}
             number={cards}
@@ -175,7 +172,7 @@ function App() {
 
     if (view.page === 2) {
       return view.cards.slice(5).map((cards) => (
-        <Grid item xs={12} sm={6} md={4} lg={3}>
+        <Grid item justify="center" xs={12} sm={6} md={4} lg={3}>
           <CardUI
             onClick={openCardByMouse}
             number={cards}
@@ -201,28 +198,31 @@ function App() {
             previousCard={previousCard}
             nextCard={nextCard}
           ></SpeechRecognition>
-          <Avatar className={classes.avatar}>
-            <NavigateBeforeIcon
-              className={classes.icon}
-              onClick={previousPage}
-            ></NavigateBeforeIcon>
-          </Avatar>
-
+          <IconButton color="white">
+            <Avatar className={classes.avatar}>
+              <NavigateBeforeIcon
+                className={classes.icon}
+                onClick={previousPage}
+              ></NavigateBeforeIcon>
+            </Avatar>
+          </IconButton>
           <Grid container justify="space-around" spacing={4}>
             {displayCards()}
           </Grid>
-          <Avatar className={classes.avatar}>
-            <NavigateNextIcon
-              className={classes.icon}
-              onClick={nextPage}
-            ></NavigateNextIcon>
-          </Avatar>
+          <IconButton>
+            <Avatar className={classes.avatar}>
+              <NavigateNextIcon
+                className={classes.icon}
+                onClick={nextPage}
+              ></NavigateNextIcon>
+            </Avatar>
+          </IconButton>
         </div>
       );
     }
     if (view.opened > 0) {
       return (
-        <div>
+        <div className={classes.root2}>
           <SpeechRecognition
             nextPage={nextPage}
             previousPage={previousPage}
@@ -234,10 +234,14 @@ function App() {
             previousCard={previousCard}
             nextCard={nextCard}
           ></SpeechRecognition>
-          <Grid container justify="center">
-            <SelectedCardUI number={view.opened}></SelectedCardUI>
+
+          <SelectedCardUI
+            selected={view.selected}
+            opened={view.opened}
+          ></SelectedCardUI>
+          <IconButton className={classes.close}>
             <CloseIcon onClick={closeCard}></CloseIcon>
-          </Grid>
+          </IconButton>
         </div>
       );
     }

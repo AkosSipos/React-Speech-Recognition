@@ -9,21 +9,36 @@ const useStyles = makeStyles({
     backgroundColor: "#448aff",
   },
   small: {
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 150,
+    fontSize: "3rem",
     backgroundColor: "white",
-    fontSize: "2rem",
     color: "#448aff",
+  },
+  smallother: {
+    width: 150,
+    height: 150,
+    fontSize: "3rem",
+    backgroundColor: "#448aff",
+    color: "white",
   },
 });
 
 const SelectedCardUI = (props) => {
   const classes = useStyles();
-  return (
-    <Avatar className={classes.large}>
-      <Avatar className={classes.small}>{props.number}</Avatar>
-    </Avatar>
-  );
+
+  const display = () => {
+    if (props.selected === props.opened) {
+      return (
+        <Avatar className={classes.large}>
+          <Avatar className={classes.small}>{props.opened}</Avatar>
+        </Avatar>
+      );
+    } else {
+      return <Avatar className={classes.smallother}>{props.opened}</Avatar>;
+    }
+  };
+  return display();
 };
 
 export default SelectedCardUI;

@@ -32,11 +32,7 @@ const Dictaphone = ({
   nextCard,
   previousCard,
 }) => {
-  /* window.setInterval(function () {
-    resetTranscript();
-  }, 3000);*/
-
-  console.log(transcript);
+  //console.log(transcript);
 
   if (!browserSupportsSpeechRecognition) {
     return null;
@@ -55,57 +51,47 @@ const Dictaphone = ({
   }
 
   if (transcript.includes("1")) {
-    console.log(transcript);
     resetTranscript();
     if (selected < 6 || opened < 6) cardSelected(1);
   }
   if (transcript.includes("2")) {
     resetTranscript();
-    console.log(transcript);
     if (selected < 6 || opened < 6) cardSelected(2);
   }
   if (transcript.includes("3")) {
     resetTranscript();
-    console.log(transcript);
     if (selected < 6 || opened < 6) cardSelected(3);
   }
   if (transcript.includes("4")) {
     resetTranscript();
-    console.log(transcript);
     if (selected < 6 || opened < 6) cardSelected(4);
   }
   if (transcript.includes("5")) {
     resetTranscript();
-    console.log(transcript);
     if (selected < 6 || opened < 6) cardSelected(5);
   }
   if (transcript.includes("6")) {
     resetTranscript();
-    console.log(transcript);
     if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
       cardSelected(6);
   }
   if (transcript.includes("7")) {
     resetTranscript();
-    console.log(transcript);
     if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
       cardSelected(7);
   }
   if (transcript.includes("8")) {
     resetTranscript();
-    console.log(transcript);
     if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
       cardSelected(8);
   }
   if (transcript.includes("9")) {
     resetTranscript();
-    console.log(transcript);
     if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
       cardSelected(9);
   }
   if (transcript.includes("10")) {
     resetTranscript();
-    console.log(transcript);
     if (selected > 5 || opened > 5 || selected === 0 || opened === 0)
       cardSelected(10);
   }
